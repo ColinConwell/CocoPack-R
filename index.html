@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Utility Functions for Data Analysis and Visualization">
 <meta name="description" content="A collection of utility functions for data analysis, visualization, and statistical computing. Includes tools for bootstrap analysis, custom ggplot2 themes, and data manipulation.">
 <meta property="og:description" content="A collection of utility functions for data analysis, visualization, and statistical computing. Includes tools for bootstrap analysis, custom ggplot2 themes, and data manipulation.">
@@ -65,7 +65,96 @@
 <img src="logo.png" class="logo" alt=""><h1 id="coco-pack-r-">Coco-Pack-R <a class="anchor" aria-label="anchor" href="#coco-pack-r-"></a>
 </h1>
 </div>
-<p>Miscelleneous Tidy-style quality-of-life and convenience functions for development in R.</p>
+<p>Miscellaneous Tidy-style quality-of-life and convenience functions for development in R.</p>
+<p><em>Caveat Emptor</em>: Much of the documentation for this package is the product of a custom auto-documentation tool (coming soon!) I’ve written with the help of Claude Sonnet 3.5. The code itself is code I’ve used and tested, but the documentation may not be fully accurate.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of cocopack from GitHub with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
+</h2>
+<div class="section level3">
+<h3 id="bootstrap-analysis-tools">Bootstrap Analysis Tools<a class="anchor" aria-label="anchor" href="#bootstrap-analysis-tools"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cocopack</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bootstrap analysis with stats parsing</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_bootstrap.html">run_bootstrap</a></span><span class="op">(</span></span>
+<span>  data_frame <span class="op">=</span> <span class="va">your_data</span>,</span>
+<span>  group_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group1"</span>, <span class="st">"group2"</span><span class="op">)</span>,</span>
+<span>  boot_fn <span class="op">=</span> <span class="va">your_function</span>,</span>
+<span>  times <span class="op">=</span> <span class="fl">1000</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Spearman correlation with bootstrap</span></span>
+<span><span class="va">cor_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/spearman_boot.html">spearman_boot</a></span><span class="op">(</span></span>
+<span>  df <span class="op">=</span> <span class="va">your_data</span>,</span>
+<span>  x_var <span class="op">=</span> <span class="st">"variable1"</span>,</span>
+<span>  y_var <span class="op">=</span> <span class="st">"variable2"</span>,</span>
+<span>  group_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group"</span><span class="op">)</span>,</span>
+<span>  R <span class="op">=</span> <span class="fl">1000</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="data-utilities">Data Utilities<a class="anchor" aria-label="anchor" href="#data-utilities"></a>
+</h3>
+<p>Helpful functions for data manipulation:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Read CSV and add filename as a column</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_csv_add_name.html">read_csv_add_name</a></span><span class="op">(</span><span class="st">"path/to/your/file.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get BibTeX citation for a package</span></span>
+<span><span class="fu"><a href="reference/get_package_bibtex.html">get_package_bibtex</a></span><span class="op">(</span><span class="st">"packagename"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="diy-development-tools">DIY Development Tools<a class="anchor" aria-label="anchor" href="#diy-development-tools"></a>
+</h2>
+<p>The <code>diy/</code> directory contains helpful resources for package development:</p>
+<div class="section level3">
+<h3 id="files-overview">Files Overview<a class="anchor" aria-label="anchor" href="#files-overview"></a>
+</h3>
+<ul>
+<li>
+<code>README.md</code>: Comprehensive guide for R package development pipeline</li>
+<li>
+<code>build.qmd</code>: Step-by-step Quarto document for building the package</li>
+<li>
+<code>hexicon.R</code>: Script for generating the package’s hexagonal logo / sticker</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="using-the-build-tools">Using the Build Tools<a class="anchor" aria-label="anchor" href="#using-the-build-tools"></a>
+</h3>
+<p>The build process is documented in <code>diy/build.qmd</code> and includes:</p>
+<ol style="list-style-type: decimal">
+<li>Documentation generation</li>
+<li>Package integrity checks</li>
+<li>Description file management</li>
+<li>Remote installation options</li>
+</ol>
+<p>Example usage of the hex sticker generator:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"diy/hexicon.R"</span><span class="op">)</span></span>
+<span><span class="co"># This will create a new hex logo using the specified parameters</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2>
+<p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>
+</div>
+<div class="section level2">
+<h2 id="bug-reports">Bug Reports<a class="anchor" aria-label="anchor" href="#bug-reports"></a>
+</h2>
+<p>Please report any bugs or issues on the <a href="https://github.com/colinconwell/Coco-Pack-R/issues" class="external-link">GitHub issues page</a>.</p>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
