@@ -39,6 +39,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/ecosystem.html">CocoPack Ecosystem</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -65,15 +71,20 @@
 <img src="logo.png" class="logo" alt=""><h1 id="coco-pack-r-">Coco-Pack-R <a class="anchor" aria-label="anchor" href="#coco-pack-r-"></a>
 </h1>
 </div>
-<p>Miscellaneous Tidy-style quality-of-life and convenience functions for development in R.</p>
-<p><em>Caveat Emptor</em>: Much of the documentation for this package is the product of a custom auto-documentation tool (coming soon!) I’ve written with the help of Claude Sonnet 3.5. The code itself is code I’ve used and tested, but the documentation may not be fully accurate.</p>
+<p>Miscellaneous, tidy-style quality-of-life and convenience functions for development in R, inspired by packages like <a href="https://hbiostat.org/r/hmisc/" class="external-link"><code>Hmisc</code></a>.</p>
+<p><em>Caveat Emptor</em>: Much of the documentation for this package is the product of a custom auto-documentation tool (coming soon!) I’ve written with ample help from Claude Sonnet 3.5. The code itself is code I’ve used and tested, but the documentation may not always be fully accurate.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of cocopack from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span><span class="op">}</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
+<p>Or, (my own preferred method), using <a href="https://github.com/trinker/pacman" class="external-link"><code>pacman</code></a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
+<p>(This simultaneously installs the package and loads it.)</p>
 </div>
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
@@ -81,10 +92,8 @@
 <div class="section level3">
 <h3 id="bootstrap-analysis-tools">Bootstrap Analysis Tools<a class="anchor" aria-label="anchor" href="#bootstrap-analysis-tools"></a>
 </h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">cocopack</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Bootstrap analysis with stats parsing</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Bootstrap analysis with stats parsing</span></span>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_bootstrap.html">run_bootstrap</a></span><span class="op">(</span></span>
 <span>  data_frame <span class="op">=</span> <span class="va">your_data</span>,</span>
 <span>  group_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group1"</span>, <span class="st">"group2"</span><span class="op">)</span>,</span>
@@ -99,27 +108,38 @@
 <span>  y_var <span class="op">=</span> <span class="st">"variable2"</span>,</span>
 <span>  group_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group"</span><span class="op">)</span>,</span>
 <span>  R <span class="op">=</span> <span class="fl">1000</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add significance labels</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/label_significance.html">label_significance</a></span><span class="op">(</span><span class="va">results</span>, p_col <span class="op">=</span> <span class="st">"p"</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="data-utilities">Data Utilities<a class="anchor" aria-label="anchor" href="#data-utilities"></a>
 </h3>
 <p>Helpful functions for data manipulation:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Read CSV and add filename as a column</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_csv_add_name.html">read_csv_add_name</a></span><span class="op">(</span><span class="st">"path/to/your/file.csv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get BibTeX citation for a package</span></span>
+<span><span class="fu"><a href="reference/get_package_bibtex.html">get_package_bibtex</a></span><span class="op">(</span><span class="st">"packagename"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Get BibTeX citation for a package</span></span>
-<span><span class="fu"><a href="reference/get_package_bibtex.html">get_package_bibtex</a></span><span class="op">(</span><span class="st">"packagename"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Read CSV and add filename as a column</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_csv_add_name.html">read_csv_add_name</a></span><span class="op">(</span><span class="st">"path/to/your/file.csv"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="plot-utilities">Plot Utilities<a class="anchor" aria-label="anchor" href="#plot-utilities"></a>
+</h3>
+<p>Helper functions for plotting with ggplot2:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># View all ggplot2 shapes</span></span>
+<span><span class="fu"><a href="reference/view_ggplot2_shapes.html">view_ggplot2_shapes</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Legends with less margin</span></span>
+<span><span class="va">plot</span> <span class="op">+</span> <span class="fu"><a href="reference/closer_legend.html">closer_legend</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="diy-development-tools">DIY Development Tools<a class="anchor" aria-label="anchor" href="#diy-development-tools"></a>
 </h2>
 <p>The <code>diy/</code> directory contains helpful resources for package development:</p>
-<div class="section level3">
-<h3 id="files-overview">Files Overview<a class="anchor" aria-label="anchor" href="#files-overview"></a>
-</h3>
 <ul>
 <li>
 <code>README.md</code>: Comprehensive guide for R package development pipeline</li>
@@ -128,7 +148,6 @@
 <li>
 <code>hexicon.R</code>: Script for generating the package’s hexagonal logo / sticker</li>
 </ul>
-</div>
 <div class="section level3">
 <h3 id="using-the-build-tools">Using the Build Tools<a class="anchor" aria-label="anchor" href="#using-the-build-tools"></a>
 </h3>
@@ -139,10 +158,7 @@
 <li>Description file management</li>
 <li>Remote installation options</li>
 </ol>
-<p>Example usage of the hex sticker generator:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"diy/hexicon.R"</span><span class="op">)</span></span>
-<span><span class="co"># This will create a new hex logo using the specified parameters</span></span></code></pre></div>
+<p>Example usage of the hex sticker generator: <code>diy/hexicon.R</code></p>
 </div>
 </div>
 <div class="section level2">
