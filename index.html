@@ -80,11 +80,11 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span><span class="op">}</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
-<p>Or, (my own preferred method), using <a href="https://github.com/trinker/pacman" class="external-link"><code>pacman</code></a>:</p>
+<p>…or (cocopack’s preferred method), with <a href="https://github.com/trinker/pacman" class="external-link"><code>pacman</code></a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span><span class="op">}</span></span>
 <span><span class="fu">pacman</span><span class="fu">::</span><span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
-<p>(This simultaneously installs the package and loads it.)</p>
+<p>Note: <code>pacman</code> simultaneously installs the package and loads it.</p>
 </div>
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
