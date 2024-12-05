@@ -1,0 +1,91 @@
+---
+title: "Narrative Step-by-Step Build"
+format: 
+  html:
+    toc: true
+    toc-location: left-body
+---
+
+```{r setup}
+#| code-fold: true
+#| output: false
+#| code-summary: "R Setup"
+
+# (install+) load the pacman package manager:
+if (!require(pacman)) {install.packages("pacman")}
+
+# define+load a list of packages with pacman
+package_list <- c("this.path", "devtools", 
+                  "usethis", "remotes", "tidyverse")
+
+pacman::p_load(char=package_list)
+```
+
+## Generate LICENSE.md File:
+
+```{r license}
+#| code-fold: false
+#| output: true
+
+# Generate a LICENSE.md file:
+usethis::use_gpl3_license()
+```
+
+## Generate Documentation
+
+```{r document}
+#| code-fold: false
+#| output: true
+
+devtools::document()
+```
+
+## Check Package Integrity
+
+```{r check-package}
+#| code-fold: false
+#| output: true
+
+devtools::check()
+```
+
+## Idealized Description Spec
+
+```
+Package: cocopack
+Title: Some R QOL
+Version: 0.0.1
+Authors@R: 
+    person("Colin", "Conwell", role = c("aut", "cre"),
+           email = "colinconwell@gmail.com",
+           comment = c(ORCID = "0000-0002-7754-1580"))
+Description: Miscellaneous tidy-style QOL (quality-of-life) convenience functions for R.
+URL: https://github.com/ColinConwell/Coco-Pack-R
+BugReports: https://github.com/ColinConwell/Coco-Pack-R/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    dplyr,
+    boot,
+    ggplot2
+Imports: 
+    pacman,
+    tidyverse
+Suggests: 
+    ggh4x,
+    tidytext
+VignetteBuilder: 
+    knitr
+LazyData: true
+License: GPL (>= 3)
+```
+
+## Alternative Build Options
+
+```{r remotes-install}
+#| code-fold: false
+#| output: true
+
+remotes::install_local("path/to/package")
+```

@@ -1,0 +1,84 @@
+---
+title: "CocoPack Ecosystem"
+output: rmarkdown::html_vignette
+description: >
+  Other tools, tips, and tricks to consider alongside those in the cocopack.
+vignette: >
+  %\VignetteIndexEntry{CocoPack Ecosystem}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## CocoPack Recommended Imports
+
+Want a good starter kit when setting out on a new R script? Copy / paste the snippet below and enjoy!
+
+```r
+if (!require(pacman)) {install.packages("pacman")}
+pacman::p_load('this.path', 'aqm', 'scales', 'psych', 'RColorBrewer', 'viridis', 
+               'cowplot', 'patchwork', 'ggstatsplot', 'ggforce', 'ggh4x', 
+               'ggpubr', 'ggridges', 'ggrepel', 'ggExtra', 'rstatix', 'tidytext', 'glue', 'tidyverse')
+```
+
+Want the best of the best for modeling? Include the following as well:
+
+```r
+pacman::p_load('brms') # the only modeling package you'll ever need
+```
+
+(Though note that `brms` is a rather intensive package to install. Well worth it, though, once you do.)
+
+
+## **PYSKA** (**P**ackages **Y**ou **S**hould **K**now **A**bout)
+
+A listified version of many of the packages, all of which I've found particularly useful as a data scientist and researcher (in cognitive science + NeuroAI):
+
+- [**tidyverse**](https://www.tidyverse.org/): In my opinion, the be-all and end-all, hands-down GOAT ecosystem of packages for data manipulation, visualization, and modeling.
+- [**reticulate**](https://rstudio.github.io/reticulate/): A package for integrating R with Python.
+- [**citr**](https://github.com/crsh/citr): A package for managing citations in RMarkdown documents.
+- [**tinytex**](https://yihui.org/tinytex/): A package for managing LaTeX distributions and engines.
+- [**boomer**](https://moodymudskipper.github.io/boomer/reference/index.html): A package for inspecting data processing pipelines.
+
+### ggplot Extensions
+
+Tools for working with ggplot2 I find myself almost always loading:
+
+- [**patchwork**](https://patchwork.data-imaginist.com/reference/index.html): A package for arranging ggplot2 plots. Includes:
+  - Intuitive specification of plot layout with operators `+` and `/`. Example: 
+    ```R
+    design <- "
+    AABB
+    AABB
+    AACC
+    "
+    p1 + p2 / p3 + plot_layout(design = design)
+    ```
+- [**cowplot**](https://wilkelab.org/cowplot/reference/index.html): A package for arranging ggplot2 plots. Includes:
+  - `plot_grid()`
+  - `get_legend()`
+- [**ggh4x**](https://teunbrand.github.io/ggh4x/reference/index.html): A cornucopia of ggplot2 extensions. Includes:
+  - `facet_nested()`
+  - `force_panel_sizes()`
+  - `facetted_pos_scales()`
+- [**ggtext**](https://wilkelab.org/ggtext/reference/index.html): A package for adding formatted text to ggplot2 plots. Includes:
+  - `element_markdown()`
+  - `geom_richtext()`
+- [**ggforce**](https://ggforce.data-imaginist.com/reference/index.html): A package for statistical transformations in ggplot2. Includes:
+  - `geom_mark_hull()`
+  - `radial_trans()`
+  - `geom_bspline()`
+- [**tidytext**](https://juliasilge.github.io/tidytext/reference/index.html): A package for text mining and analysis. Includes the scale management functions:
+  - `reorder_within()`
+  - `scale_{x,y}_reordered()`
+- [**ggpubr**](https://rpkgs.datanovia.com/ggpubr/reference/index.html): A package for creating publication-ready ggplot2 plots. Includes:
+  - `ggsummarystats()`
+  - `stat_cor()`
+  - `stat_compare_means()`
+- [**ggstatsplot**](https://indrajeetpatil.github.io/ggstatsplot/reference/index.html): A package for publication-ready plots with statistical details.
+- [**ggeasy**](https://jonocarroll.github.io/ggeasy/reference/index.html): A package for simplifying common ggplot2 design + theme management.
+- [**ggside**](https://github.com/jtlandis/ggside): A package for adding side panels to ggplot2 plots.
+- [**ggridges**](https://wilkelab.org/ggridges/reference/index.html): A package for creating ridgeline plots.
+- [**ggrepel**](https://ggrepel.slowkow.com/reference/): A package for adding labeled text to ggplot2 plots.
+- [**ggExtra**](https://daattali.com/shiny/ggExtra-ggMarginal-demo/): A package for adding ``ggMarginal()`` plots.
+- [**ggstance**](https://github.com/lionel-/ggstance): Horizontal ggplot2 (now deprecated in favor of base ggplot2).
+- [**ggfortify**](https://github.com/sinhrks/ggfortify): Expanded autoplot functionality for ggplot2.

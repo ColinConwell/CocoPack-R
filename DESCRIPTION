@@ -1,0 +1,33 @@
+Package: cocopack
+Title: Utility Functions for Data Analysis and Visualization
+Version: 0.1.0
+Authors@R: 
+    person("Colin", "Conwell", email = "colinconwell@gmail.com", role = c("aut", "cre"))
+Description: A collection of utility functions for data analysis, visualization,
+    and statistical computing. Includes tools for bootstrap analysis, custom
+    ggplot2 themes, and data manipulation.
+BugReports: https://github.com/colinconwell/Coco-Pack-R/issues
+License: file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    knitr,
+    dplyr,
+    purrr,
+    arrow,
+    readr,
+    boot,
+    glue,
+    tibble,
+    stringr,
+    ggplot2,
+    janitor,
+    progress,
+    rstatix
+Suggests:
+    pkgdown,
+    testthat (>= 3.0.0)
+VignetteBuilder:
+    knitr
+Config/testthat/edition: 3
