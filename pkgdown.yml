@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   ecosystem: ecosystem.html
-last_built: 2024-12-05T23:17Z
+last_built: 2024-12-05T23:18Z
 urls:
   reference: https://colinconwell.github.io/Coco-Pack-R/reference
   article: https://colinconwell.github.io/Coco-Pack-R/articles
