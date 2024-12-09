@@ -79,6 +79,7 @@ run_bootstrap <- function(data_frame, group_vars, boot_fn, times=1000,
 #' @param results Results data frame
 #' @param p_col Column name containing p-values
 #' @param alpha Significance threshold
+#' @param label_values Vector of p-value cutpoints to label
 #' @param ns_label Label for non-significant results
 #' @return Data frame with added significance labels
 #' @export
@@ -87,16 +88,15 @@ run_bootstrap <- function(data_frame, group_vars, boot_fn, times=1000,
 #' @importFrom rstatix add_significance
 #' @importFrom dplyr rename_at
 #' @importFrom stringr str_replace_all str_replace fixed
-label_significance <- function(results, p_col='p', alpha=0.05, ns_label='NS') {
-  p_values = c(1e-5, 1e-4, 0.001, 0.01, 0.05) %>%
-    keep(function(x) {x <= alpha})
-  
+label_significance <- function(results, p_col='p', alpha=0.05, label_values=c(0.001, .01, 0.05, ns_label='NS')) {
+  p_values = label_values %>% keep(function(x) {x <= alpha})
+
   labels = c(map(p_values, function(x) {glue('p > {x}')}), ns_label) %>%
     str_replace_all(fixed('0.'), '.')
   
   results %>% 
     add_significance(p.col = p_col, symbols = labels,
-                    cutpoints = c(0, p_values, 1)) %>%
+                     cutpoints = c(0, p_values, 1)) %>%
     rename_at(vars(ends_with('.signif')), str_replace, '.signif', '_signif')
 }
 
@@ -131,8 +131,10 @@ spearman_corr <- function(data, indices=NULL, x_var, y_var) {
 #' @param parse Whether to parse results
 #' @return Bootstrap results for Spearman correlation
 #' @export
+#' @importFrom dplyr mutate
 spearman_boot <- function(df, x_var, y_var, group_vars, R=1000, parse=TRUE) {
 
+  # suppress warnings from spearman_corr
   boot_fn <- function(data, indices) {
     suppressWarnings(spearman_corr(data, indices, x_var, y_var))
   }

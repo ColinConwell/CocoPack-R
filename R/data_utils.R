@@ -69,10 +69,10 @@ flip_names <- function(mapping) {
            values = temp_keys) %>%
     select(-temp_keys) %>% deframe()
   
-  if (original_class == 'list') {
-    new_vec <- as.list(new_vec)
-  } else {
+  if (original_class != 'list') {
     return(new_vec)
+  } else {
+    return(as.list(new_vec))
   }
 }
 
