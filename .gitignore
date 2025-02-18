@@ -1,6 +1,8 @@
 # Aggregator files
 xyz/
 
+# IDE files
+.vscode/
 
 # History files
 .Rhistory
@@ -51,6 +53,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# CRAN generated files
+# CRAN-SUBMISSION
 
 # OS-specific files
 .DS_Store
