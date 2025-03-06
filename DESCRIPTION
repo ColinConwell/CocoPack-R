@@ -3,21 +3,22 @@ Title: Utility Functions for Data Analysis and Visualization
 Version: 0.1.0
 Authors@R: 
     person("Colin", "Conwell", email = "colinconwell@gmail.com", role = c("aut", "cre"))
+Author: Colin Conwell [aut, cre]
 Description: A collection of utility functions for data analysis, visualization,
     and statistical computing. Includes tools for bootstrap analysis, custom
     ggplot2 themes, and data manipulation.
 Maintainer: Colin Conwell <colinconwell@gmail.com>
 BugReports: https://github.com/colinconwell/CocoPack-R/issues
-License: file LICENSE
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
-    knitr,
     dplyr,
     purrr,
     arrow,
     readr,
+    tidyr,
     boot,
     glue,
     tibble,
@@ -25,8 +26,11 @@ Imports:
     ggplot2,
     janitor,
     progress,
-    rstatix
+    rstatix,
+    magrittr,
+    rlang
 Suggests:
+    knitr,
     pkgdown,
     testthat (>= 3.0.0)
 VignetteBuilder:

@@ -8,7 +8,8 @@ label_significance(
   results,
   p_col = "p",
   alpha = 0.05,
-  label_values = c(0.001, 0.01, 0.05, ns_label = "NS")
+  label_values = c(0.001, 0.01, 0.05),
+  ns_label = "NS"
 )
 }
 \arguments{

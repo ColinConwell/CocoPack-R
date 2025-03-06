@@ -88,7 +88,7 @@ run_bootstrap <- function(data_frame, group_vars, boot_fn, times=1000,
 #' @importFrom rstatix add_significance
 #' @importFrom dplyr rename_at
 #' @importFrom stringr str_replace_all str_replace fixed
-label_significance <- function(results, p_col='p', alpha=0.05, label_values=c(0.001, .01, 0.05, ns_label='NS')) {
+label_significance <- function(results, p_col='p', alpha=0.05, label_values=c(0.001, .01, 0.05), ns_label='NS') {
   p_values = label_values %>% keep(function(x) {x <= alpha})
 
   labels = c(map(p_values, function(x) {glue('p > {x}')}), ns_label) %>%

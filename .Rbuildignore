@@ -1,5 +1,14 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^xyzopt$
 ^LICENSE\.md$
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
+^_pkgdown\.yml$
+^diy$
+^docs$
+^hex-logo\.png$
+^litr$
+^pkgdown$
+^\.github$
+^\.vscode$

@@ -6,6 +6,12 @@
 \usage{
 print_r_info()
 }
+\value{
+Information about the R installation
+}
 \description{
 Print system information about R
+}
+\examples{
+print_r_info()
 }

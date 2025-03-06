@@ -2,16 +2,18 @@
 
 #' Print system information about R
 #' 
+#' @return Information about the R installation
+#' @examples
+#' print_r_info()
 #' @export
 print_r_info <- function() {
-  system("type R"); file.path(R.home("bin"), "R")
-}
-
-#' Say hello to someone (test function)
-#' 
-#' @param name Name of a person
-#' @param exclamation Whether to include an exclamation mark
-#' @export 
-say_hello <- function(name, exclamation = TRUE) {
-  paste0("Hello ", name, ifelse(exclamation, "!", "."))
+  cat("R version:", R.version.string, "\n")
+  cat("Platform:", R.version$platform, "\n")
+  r_path <- file.path(R.home("bin"), "R")
+  cat("R executable path:", r_path, "\n")
+  invisible(list(
+    version = R.version.string,
+    platform = R.version$platform,
+    path = r_path
+  ))
 }

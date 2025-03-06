@@ -35,7 +35,7 @@ read_csv_add_name <- function(file) {
 #' @importFrom arrow read_parquet
 #' @importFrom dplyr mutate
 read_parquet_add_name <- function(file) {
-  read_csv(file) %>% mutate(filename = file)
+  read_parquet(file) %>% mutate(filename = file)
 }
 
 #' Get Package Citation in BibTeX Format
@@ -130,7 +130,7 @@ add_log_to_name <- function(x, check=TRUE) {
 #' @importFrom stringr str_remove
 #' @export
 remove_log_label <- function(data) {
-  remove_label <- function(x) {
+  remove_log <- function(x) {
     x %>% str_remove('log_') %>%
       str_remove('log(') %>% str_remove(')')
   }
