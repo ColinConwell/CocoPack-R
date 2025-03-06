@@ -19,7 +19,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Utility Functions for Data Analysis and Visualization">
 <meta name="description" content="A collection of utility functions for data analysis, visualization, and statistical computing. Includes tools for bootstrap analysis, custom ggplot2 themes, and data manipulation.">
 <meta property="og:description" content="A collection of utility functions for data analysis, visualization, and statistical computing. Includes tools for bootstrap analysis, custom ggplot2 themes, and data manipulation.">
-<meta property="og:image" content="https://colinconwell.github.io/Coco-Pack-R/logo.png">
+<meta property="og:image" content="https://colinconwell.github.io/CocoPack-R/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -50,7 +50,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/colinconwell/Coco-Pack-R/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/colinconwell/CocoPack-R/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
@@ -68,7 +68,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="coco-pack-r-">Coco-Pack-R <a class="anchor" aria-label="anchor" href="#coco-pack-r-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="cocopack-r-">CocoPack-R <a class="anchor" aria-label="anchor" href="#cocopack-r-"></a>
 </h1>
 </div>
 <p>Miscellaneous, tidy-style quality-of-life and convenience functions for development in R, inspired by packages like <a href="https://hbiostat.org/r/hmisc/" class="external-link"><code>Hmisc</code></a>.</p>
@@ -76,14 +76,14 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of cocopack from GitHub with:</p>
+<p>You can install the development version of CocoPack from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span><span class="op">}</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
-<p>…or (cocopack’s preferred method), with <a href="https://github.com/trinker/pacman" class="external-link"><code>pacman</code></a>:</p>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"colinconwell/CocoPack-R"</span><span class="op">)</span></span></code></pre></div>
+<p>…or (CocoPack’s preferred method), with <a href="https://github.com/trinker/pacman" class="external-link"><code>pacman</code></a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span><span class="op">}</span></span>
-<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"colinconwell/Coco-Pack-R"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"colinconwell/CocoPack-R"</span><span class="op">)</span></span></code></pre></div>
 <p>Note: <code>pacman</code> simultaneously installs the package and loads it.</p>
 </div>
 <div class="section level2">
@@ -175,14 +175,14 @@
 <div class="section level2">
 <h2 id="bug-reports">Bug Reports<a class="anchor" aria-label="anchor" href="#bug-reports"></a>
 </h2>
-<p>Please report any bugs or issues on the <a href="https://github.com/colinconwell/Coco-Pack-R/issues" class="external-link">GitHub issues page</a>.</p>
+<p>Please report any bugs or issues on the <a href="https://github.com/colinconwell/CocoPack-R/issues" class="external-link">GitHub issues page</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/colinconwell/Coco-Pack-R/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/colinconwell/Coco-Pack-R/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/colinconwell/CocoPack-R/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/colinconwell/CocoPack-R/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
