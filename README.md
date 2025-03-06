@@ -1,4 +1,4 @@
-# Coco-Pack-R <img src="man/figures/logo.png" align="right" width="224px" height="224px" />
+# CocoPack-R <img src="man/figures/logo.png" align="right" width="224px" height="224px" />
 
 Miscellaneous, tidy-style quality-of-life and convenience functions for development in R, inspired by packages like [`Hmisc`](https://hbiostat.org/r/hmisc/).
 
@@ -6,18 +6,18 @@ Miscellaneous, tidy-style quality-of-life and convenience functions for developm
 
 ## Installation
 
-You can install the development version of cocopack from GitHub with:
+You can install the development version of CocoPack from GitHub with:
 
 ```r
 if (!require(devtools)) {install.packages("devtools")}
-devtools::install_github("colinconwell/Coco-Pack-R")
+devtools::install_github("colinconwell/CocoPack-R")
 ```
 
-...or (cocopack's preferred method), with [`pacman`](https://github.com/trinker/pacman):
+...or (CocoPack's preferred method), with [`pacman`](https://github.com/trinker/pacman):
 
 ```r
 if (!require(pacman)) {install.packages("pacman")}
-pacman::p_load_gh("colinconwell/Coco-Pack-R")
+pacman::p_load_gh("colinconwell/CocoPack-R")
 ```
 
 Note: `pacman` simultaneously installs the package and loads it.
@@ -103,4 +103,4 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## Bug Reports
 
-Please report any bugs or issues on the [GitHub issues page](https://github.com/colinconwell/Coco-Pack-R/issues).
+Please report any bugs or issues on the [GitHub issues page](https://github.com/colinconwell/CocoPack-R/issues).

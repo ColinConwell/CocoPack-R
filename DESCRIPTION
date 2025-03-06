@@ -7,7 +7,7 @@ Description: A collection of utility functions for data analysis, visualization,
     and statistical computing. Includes tools for bootstrap analysis, custom
     ggplot2 themes, and data manipulation.
 Maintainer: Colin Conwell <colinconwell@gmail.com>
-BugReports: https://github.com/colinconwell/Coco-Pack-R/issues
+BugReports: https://github.com/colinconwell/CocoPack-R/issues
 License: file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

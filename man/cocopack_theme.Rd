@@ -15,7 +15,7 @@ cocopack_theme(which = "default", text_size = 16)
 A ggplot2 theme object
 }
 \description{
-Cocopack themes for ggplot2.
+CocoPack themes for ggplot2.
 }
 \details{
 The default theme is a minimalist theme based on theme_bw() with gridlines removed.

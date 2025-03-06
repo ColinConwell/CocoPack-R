@@ -2,7 +2,7 @@
 title: "CocoPack Ecosystem"
 output: rmarkdown::html_vignette
 description: >
-  Other tools, tips, and tricks to consider alongside those in the cocopack.
+  Other tools, tips, and tricks to consider alongside those in the CocoPack.
 vignette: >
   %\VignetteIndexEntry{CocoPack Ecosystem}
   %\VignetteEngine{knitr::rmarkdown}

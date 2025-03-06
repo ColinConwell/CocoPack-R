@@ -1,4 +1,4 @@
-url: https://colinconwell.github.io/Coco-Pack-R/
+url: https://colinconwell.github.io/CocoPack-R/
 template:
   bootstrap: 5
   light-switch: true
@@ -41,7 +41,7 @@ reference:
   - print_r_info
 
 articles:
-- title: "Cocopack Ecosystem"
+- title: "CocoPack Ecosystem"
   navbar: ~
   contents:
   - ecosystem

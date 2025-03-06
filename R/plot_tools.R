@@ -1,6 +1,6 @@
 #' Create a Custom ggplot2 Theme
 #'
-#' Cocopack themes for ggplot2.
+#' CocoPack themes for ggplot2.
 #'
 #' The default theme is a minimalist theme based on theme_bw() with gridlines removed.
 #' 
@@ -17,7 +17,7 @@ cocopack_theme <- function(which='default', text_size=16) {
       panel.grid.minor = element_blank()
     )
   } else {
-    stop("Invalid cocopack theme; choose from c('default')")
+    stop("Invalid CocoPack theme; choose from c('default')")
   }
 }
 
