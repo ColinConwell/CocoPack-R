@@ -13,14 +13,12 @@ if (!require(devtools)) {install.packages("devtools")}
 devtools::install_github("colinconwell/CocoPack-R")
 ```
 
-...or (CocoPack's preferred method), with [`pacman`](https://github.com/trinker/pacman):
+Then, load as usual with `library('cocopack')`... or alongside other packages with[`pacman`](https://github.com/trinker/pacman):
 
 ```r
-if (!require(pacman)) {install.packages("pacman")}
-pacman::p_load_gh("colinconwell/CocoPack-R")
+if (!require([pacman])) {install.packages("pacman")}
+pacman::p_load('cocopack', 'dplyr', 'ggplot2')
 ```
-
-Note: `pacman` simultaneously installs the package and loads it.
 
 ## Features
 
