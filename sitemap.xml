@@ -1,5 +1,6 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://colinconwell.github.io/CocoPack-R/404.html</loc></url>
+<url><loc>https://colinconwell.github.io/CocoPack-R/LICENSE-text.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/LICENSE.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/articles/ecosystem.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/articles/index.html</loc></url>
@@ -19,7 +20,6 @@
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/read_parquet_add_name.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/remove_log_label.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/run_bootstrap.html</loc></url>
-<url><loc>https://colinconwell.github.io/CocoPack-R/reference/say_hello.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/spearman_boot.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/spearman_corr.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/view_ggplot2_shapes.html</loc></url>
