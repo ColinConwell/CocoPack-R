@@ -37,7 +37,6 @@ reference:
 - title: "Test Functions"
   desc: "Utility and test functions"
   contents:
-  - say_hello
   - print_r_info
 
 articles:
