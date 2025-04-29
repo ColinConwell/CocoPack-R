@@ -12,32 +12,6 @@ vslice <- function(vector, start, stop=NULL) {
   return(vector[start:stop])
 }
 
-#' Read CSV and Add Filename Column
-#'
-#' Reads a CSV file and adds the filename as a column in the resulting dataframe
-#'
-#' @param file Path to the CSV file
-#' @return A tibble with an additional filename column
-#' @export
-#' @importFrom readr read_csv
-#' @importFrom dplyr mutate
-read_csv_add_name <- function(file) {
-  read_csv(file) %>% mutate(filename = file)
-}
-
-#' Read Parquet and Add Filename Column
-#'
-#' Reads a Parquet file and adds the filename as a column in the resulting dataframe
-#'
-#' @param file Path to the Parquet file
-#' @return A tibble with an additional filename column
-#' @export
-#' @importFrom arrow read_parquet
-#' @importFrom dplyr mutate
-read_parquet_add_name <- function(file) {
-  read_parquet(file) %>% mutate(filename = file)
-}
-
 #' Get Package Citation in BibTeX Format
 #'
 #' @param x Package name
@@ -46,8 +20,6 @@ read_parquet_add_name <- function(file) {
 get_package_bibtex <- function(x) {
   print(x, bibtex = TRUE)
 }
-
-
 
 #' Flip Keys and Values in a Named Vector or List
 #'
@@ -137,4 +109,94 @@ remove_log_label <- function(data) {
   
   data %>% 
     rename_at(starts_with('log'), remove_log)
+}
+
+#' Load a Dataframe from any File Format
+#'
+#' Loads data from various file formats including CSV, Excel, Parquet, and RDS files.
+#' Can handle a single file path or multiple file paths.
+#'
+#' @param file_path Character string or character vector with path(s) to file(s)
+#' @param file_type Optional character string specifying file type. If NULL (default),
+#'                 the function will detect the file type from the file extension.
+#' @param sheet Optional sheet name or number for Excel files (default is the first sheet)
+#' @param add_path_col Logical, if TRUE adds a column with the file path (default: FALSE)
+#' @param path_col_name Character string specifying the name of the path column (default: "file_path")
+#' @param ... Additional parameters passed to the underlying read function
+#' @return A single dataframe when one file path is provided, or a combined dataframe when multiple paths are provided
+#' @importFrom readr read_csv read_rds read_tsv
+#' @importFrom arrow read_parquet
+#' @importFrom readxl read_excel
+#' @importFrom purrr map2_df
+#' @importFrom tools file_ext
+#' @importFrom dplyr mutate
+#' @export
+load_data <- function(file_path, file_type = NULL, sheet = NULL, 
+                      add_path_col = FALSE, path_col_name = "file_path", ...) {
+  
+  # Function to determine file type from extension
+  get_file_type <- function(path) {
+    ext <- tolower(tools::file_ext(path))
+    switch(ext,
+           "csv" = "csv",
+           "tsv" = "tsv",
+           "xls" = "excel",
+           "xlsx" = "excel",
+           "parquet" = "parquet",
+           "rds" = "rds",
+           stop("Unsupported file extension: ", ext))
+  }
+  
+  # Function to read a single file
+  read_single_file <- function(path, type = NULL, ...) {
+    if (is.null(type)) {
+      type <- get_file_type(path)
+    }
+    
+    data <- switch(type,
+           "csv" = readr::read_csv(path, ...),
+           "tsv" = readr::read_tsv(path, ...),
+           "excel" = readxl::read_excel(path, sheet = sheet, ...),
+           "parquet" = arrow::read_parquet(path, ...),
+           "rds" = readr::read_rds(path, ...),
+           stop("Unsupported file type: ", type))
+    
+    if (add_path_col) {
+      data <- dplyr::mutate(data, !!path_col_name := path)
+    }
+    
+    return(data)
+  }
+  
+  # Handle single or multiple file paths
+  if (length(file_path) == 1) {
+    return(read_single_file(file_path, file_type, ...))
+  } else {
+    # For multiple files, use the same file_type for all if specified
+    if (!is.null(file_type) && length(file_type) == 1) {
+      file_type <- rep(file_type, length(file_path))
+    }
+    
+    # Read all files and combine them
+    result <- purrr::map2_df(
+      file_path, 
+      if (is.null(file_type)) rep(list(NULL), length(file_path)) else file_type,
+      ~ read_single_file(.x, .y, ...)
+    )
+    
+    return(result)
+  }
+}
+
+#' Read a Dataframe from any File Format
+#'
+#' Alias for load_data(). Reads data from various file formats including CSV, Excel, Parquet, and RDS files.
+#' Can handle a single file path or multiple file paths.
+#'
+#' @inheritParams load_data
+#' @return A single dataframe when one file path is provided, or a combined dataframe when multiple paths are provided
+#' @export
+read_data <- function(file_path, file_type = NULL, sheet = NULL, 
+                      add_path_col = FALSE, path_col_name = "file_path", ...) {
+  load_data(file_path, file_type, sheet, add_path_col, path_col_name, ...)
 }

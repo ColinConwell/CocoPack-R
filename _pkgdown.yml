@@ -7,6 +7,18 @@ development:
   mode: auto
 
 reference:
+- title: "Data Utilities"
+  desc: "Functions for data manipulation"
+  contents:
+  - vslice
+  - load_data
+  - read_data
+  - flip_names
+  - name_to_title
+  - name_to_upper
+  - add_log_to_name
+  - remove_log_label
+
 - title: "Plotting Utilities"
   desc: "Functions for plot customization"
   contents:
@@ -14,30 +26,18 @@ reference:
   - closer_legend
   - view_ggplot2_shapes
 
-- title: "Data Utilities"
-  desc: "Functions for data manipulation"
-  contents:
-  - vslice
-  - get_package_bibtex
-  - read_csv_add_name
-  - read_parquet_add_name
-  - flip_names
-  - name_to_title
-  - name_to_upper
-  - add_log_to_name
-  - remove_log_label
-
-- title: "Statistical Functions"
+- title: "Stats Utilities"
   desc: "Functions for statistical analysis"
   contents:
   - run_bootstrap
   - spearman_boot
   - label_significance
 
-- title: "Test Functions"
-  desc: "Utility and test functions"
+- title: "Package Utilities"
+  desc: "Package + R environment utilities"
   contents:
   - print_r_info
+  - get_package_bibtex
 
 articles:
 - title: "CocoPack Ecosystem"
