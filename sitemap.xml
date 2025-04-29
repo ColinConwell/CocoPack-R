@@ -14,11 +14,11 @@
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/get_package_bibtex.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/index.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/label_significance.html</loc></url>
+<url><loc>https://colinconwell.github.io/CocoPack-R/reference/load_data.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/name_to_title.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/name_to_upper.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/print_r_info.html</loc></url>
-<url><loc>https://colinconwell.github.io/CocoPack-R/reference/read_csv_add_name.html</loc></url>
-<url><loc>https://colinconwell.github.io/CocoPack-R/reference/read_parquet_add_name.html</loc></url>
+<url><loc>https://colinconwell.github.io/CocoPack-R/reference/read_data.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/remove_log_label.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/run_bootstrap.html</loc></url>
 <url><loc>https://colinconwell.github.io/CocoPack-R/reference/spearman_boot.html</loc></url>
